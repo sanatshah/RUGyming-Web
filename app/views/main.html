@@ -1,0 +1,22 @@
+
+
+<div class="jumbotron" ng-controller="MainCtrl">
+
+<div ng-show="!answer">
+  <h1>Gym time?</h1>
+  </br>
+
+  <button type="button" class="btn btn-danger btn-sm btn-block" ng-click="timeCheck()">Check if it is open.</button>
+
+  <hr>
+
+</div>
+
+  <div class="alert alert-danger" role="alert" ng-show="answer">
+
+   <h3> {{check}} {{hurry}}</h3>
+
+  </div>
+
+</div>
+

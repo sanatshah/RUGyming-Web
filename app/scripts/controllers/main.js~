@@ -1,0 +1,40 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name rugymingApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the rugymingApp
+ */
+
+var rugym=angular.module('rugymingApp');
+
+rugym.controller('MainCtrl', function($scope, $http){
+   
+
+    $scope.timeCheck=function(){
+
+	$scope.meetingareas=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"];
+
+	var today=new Date();
+	var dd=today.getDate();
+	var mm=today.getMonth()+1;
+	var yyyy=today.getFullYear();
+	var hour=today.getHours();
+	var min=today.getMinutes();
+
+	dd=25;
+
+
+	today = mm.toString()+'/'+dd.toString()+'/'+yyyy.toString();
+
+	
+	//$scope.test=today;
+	$scope.test=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"][today];
+
+    }
+
+
+});
+

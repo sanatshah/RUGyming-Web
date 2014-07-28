@@ -1,0 +1,15 @@
+<div class="well well-lg" ng-controller="MainCtrl">
+  <h3>Want to go to the Gym?</h3>
+</br>
+ <button type="button" class="btn btn-danger" ng-click="timeCheck()">Check if it is open!</button>
+<ul> <li ng-repeat="(key, value) in meetingareas">
+<div> 
+  {{key}}-{{value}}
+</div>
+
+</li>
+</ul>
+
+{{test}}
+</div>
+
