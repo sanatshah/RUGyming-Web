@@ -8,7 +8,10 @@ rugym.controller('MainCtrl', function($scope, $http){
     $scope.timeCheck=function(){
 
 	$scope.meetingareas=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"];
-
+	$scope.answer=true;
+	$scope.check="test";
+	$scope.hurry="test2";
+	
 	var today=new Date();
 	var dd=today.getDate();
 	var mm=today.getMonth()+1;
@@ -17,14 +20,17 @@ rugym.controller('MainCtrl', function($scope, $http){
 	var min=today.getMinutes();
 
 	dd=25;
-//	hour=18;
+	hour=20;
+	mm=7;
 
-	today = mm.toString()+'/'+dd.toString()+'/'+yyyy.toString();
-
-	var opentime=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"][today];
+	var todaydate = mm.toString()+'/'+dd.toString()+'/'+yyyy.toString();
+	
+	$scope.check=todaydate;
+	var opentime=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"][todaydate];
 	var begintime=parseInt(opentime.charAt(0));
-	var endtime=parseInt(opentime.charAt(9))+12;
-
+	var endtime=(parseInt(opentime.charAt(9)))+12;
+	
+	
 	if ((hour>=begintime)&&(hour<=endtime)){
 
 	    $scope.answer=true;

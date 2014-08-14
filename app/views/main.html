@@ -1,16 +1,66 @@
 
-
 <div class="jumbotron" ng-controller="MainCtrl">
 
 <div ng-show="!answer">
   <h1>Gym time?</h1>
   </br>
 
-  <button type="button" class="btn btn-danger btn-sm btn-block" ng-click="timeCheck()">Check if it is open.</button>
+<div class="row">
+  <div class="col-md-4">
 
+    <div class="control-group">
+      <select multiple class="span3" ng-model="campusOption" ng-change="saveCampus()">
+        <option>Busch</option>
+	<option>College Ave</option> 
+	<option>Livingston</option>
+	<option>Cook/Douglas</option>
+		
+      </select>
+    </div>
+
+  </div>
+  <div class="col-md-4">
+
+    <div class="control-group">
+      <select multiple class="span3">
+        <option>Olympic Pool</option>
+	<option>Fitness Center</option> 
+	<option>Badminton</option>
+	<option>Basketball Courts</option>
+	<option>Racquetball</option>
+	<option>Patio Pool</option>
+		
+      </select>
+    </div>
+
+
+  </div>
+  <div class="col-md-4">
+
+
+    <div class="control-group">
+      <select multiple class="span3">
+       <option>Third option</option>
+		
+      </select>
+    </div>
+
+
+
+  </div>
+</div>
+
+</br>
+
+  <button type="button" class="btn btn-danger btn-sm btn-block" ng-click="timeCheck()">Check if it is open.</button>
+  
   <hr>
 
 </div>
+
+
+
+
 
   <div class="alert alert-danger" role="alert" ng-show="answer">
 
