@@ -6,6 +6,9 @@ rugym.controller('MainCtrl', function($scope, $http){
 
     var campus; 
     var sport;
+    var matemp;
+
+    var checkPlace;
    
 
     $scope.saveCampus=function(){
@@ -15,24 +18,37 @@ rugym.controller('MainCtrl', function($scope, $http){
 
 	    $scope.sportOpt=['Fitness Center', 'Multisports Bay 1 (Badminton)', 'Multisports Bay 2 (Multi-Use)', 'Multisports Bay 3 (Basketball)', 'Racquetball', 'Olympic Pool', 'Patio Pool'];
 
+	    checkPlace=times[campus+" Campus"]["Sonny Werblin Recreation Center"].meetingareas;
+
 	}else if (campus=="College Ave"){
 
-	    $scope.sportOpt=['Main Gym','Fitness Center', 'Annex', 'Power Gym', 'Rockwall'];
-
-	}else if (campus=="Cook/Douglas"){
+	    $scope.sportOpt=['Main Gym ','Fitness Center', 'Annex', 'Power Gym', 'Rockwall'];
 	    
-	    $scope.sportOpt=['Gyme Annex', 'Fitness Center', 'Racquet Sports', 'Pool'];
+	    checkPlace=times["College Avenue Campus"]["College Avenue Gym"].meetingareas;
 
+	}else if (campus=="Easton Avenue"){
+
+	   
+	    $scope.sportOpt=['Rutgers Fitness Center'];
+	    checkPlace=times["College Avenue Campus"]["Rutgers Fitness Center (Easton Ave Gym)"].meetingareas;
+
+
+
+	    
+
+	 }else if (campus=="Cook/Douglas"){
+	    
+	    $scope.sportOpt=['Gym Annex', 'Fitness Center', 'Racquet Sports', 'Pool'];
+	    checkPlace=times[campus+" Campus"]["Cook/Douglass Recreation Center"].meetingareas;
 
 	} else {
 
 	    $scope.sportOpt=['Multisports', 'Fitness Center', 'Multi-Purpose Room'];
-
+	    checkPlace=times[campus+" Campus"]["Livingston Recreation Center"].meetingareas;
 
 	}
 	
 	
-
 	}
 
     $scope.saveSport=function(){
@@ -42,7 +58,6 @@ rugym.controller('MainCtrl', function($scope, $http){
 
     $scope.timeCheck=function(){
 
-	$scope.meetingareas=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas;
 	$scope.answer=true;
 	
 	var today=new Date();
@@ -52,7 +67,7 @@ rugym.controller('MainCtrl', function($scope, $http){
 	var hour=today.getHours();
 	var min=today.getMinutes();
 
-	dd=25;
+	dd=15;
 	hour=20;
 	mm=7;
 
@@ -61,8 +76,20 @@ rugym.controller('MainCtrl', function($scope, $http){
 	$scope.check=todaydate;
 	//$scope.test="hello";
 
-	var opentime=times[campus+" Campus"]["Sonny Werblin Recreation Center"].meetingareas[sport][todaydate];
-	$scope.test=opentime;
+	var opentime;
+
+	if (campus=="Easton Avenue Gym"){
+	   opentime=checkPlace.Hours[todaydate]
+	    $scope.test=checkPlace;
+	 }   else{
+		opentime=checkPlace[sport][todaydate];
+	    $scope.test=checkPlace[sport];
+		}
+
+	
+
+
+
 	var begintime=parseInt(opentime.charAt(0));
 	var endtime=(parseInt(opentime.charAt(9)))+12;
 	
