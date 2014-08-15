@@ -36,9 +36,9 @@ rugym.controller('MainCtrl', function($scope, $http){
 
 	    
 
-	 }else if (campus=="Cook/Douglas"){
+	 }else if (campus=="Cook/Douglass"){
 	    
-	    $scope.sportOpt=['Gym Annex', 'Fitness Center', 'Racquet Sports', 'Pool'];
+	    $scope.sportOpt=['Gym Annex ', 'Fitness Center ', 'Racquet Sports ', 'Pool'];
 	    checkPlace=times[campus+" Campus"]["Cook/Douglass Recreation Center"].meetingareas;
 
 	} else {
