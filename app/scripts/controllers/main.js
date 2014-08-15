@@ -3,14 +3,47 @@
 var rugym=angular.module('rugymingApp');
 
 rugym.controller('MainCtrl', function($scope, $http){
+
+    var campus; 
+    var sport;
+   
+
+    $scope.saveCampus=function(){
+	campus=$scope.campusOption;
+
+	if (campus=="Busch"){
+
+	    $scope.sportOpt=['Fitness Center', 'Multisports Bay 1 (Badminton)', 'Multisports Bay 2 (Multi-Use)', 'Multisports Bay 3 (Basketball)', 'Racquetball', 'Olympic Pool', 'Patio Pool'];
+
+	}else if (campus=="College Ave"){
+
+	    $scope.sportOpt=['Main Gym','Fitness Center', 'Annex', 'Power Gym', 'Rockwall'];
+
+	}else if (campus=="Cook/Douglas"){
+	    
+	    $scope.sportOpt=['Gyme Annex', 'Fitness Center', 'Racquet Sports', 'Pool'];
+
+
+	} else {
+
+	    $scope.sportOpt=['Multisports', 'Fitness Center', 'Multi-Purpose Room'];
+
+
+	}
+	
+	
+
+	}
+
+    $scope.saveSport=function(){
+	sport=$scope.sportOption;
+	}
    
 
     $scope.timeCheck=function(){
 
-	$scope.meetingareas=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"];
+	$scope.meetingareas=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas;
 	$scope.answer=true;
-	$scope.check="test";
-	$scope.hurry="test2";
 	
 	var today=new Date();
 	var dd=today.getDate();
@@ -26,7 +59,10 @@ rugym.controller('MainCtrl', function($scope, $http){
 	var todaydate = mm.toString()+'/'+dd.toString()+'/'+yyyy.toString();
 	
 	$scope.check=todaydate;
-	var opentime=times["Busch Campus"]["Sonny Werblin Recreation Center"].meetingareas["Fitness Center"][todaydate];
+	//$scope.test="hello";
+
+	var opentime=times[campus+" Campus"]["Sonny Werblin Recreation Center"].meetingareas[sport][todaydate];
+	$scope.test=opentime;
 	var begintime=parseInt(opentime.charAt(0));
 	var endtime=(parseInt(opentime.charAt(9)))+12;
 	

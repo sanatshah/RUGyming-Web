@@ -1,4 +1,3 @@
-
 <div class="jumbotron" ng-controller="MainCtrl">
 
 <div ng-show="!answer">
@@ -19,16 +18,12 @@
     </div>
 
   </div>
+
   <div class="col-md-4">
 
     <div class="control-group">
-      <select multiple class="span3">
-        <option>Olympic Pool</option>
-	<option>Fitness Center</option> 
-	<option>Badminton</option>
-	<option>Basketball Courts</option>
-	<option>Racquetball</option>
-	<option>Patio Pool</option>
+      <select multiple class="span3" ng-model="sportOption" ng-change="saveSport()">
+        <option ng-repeat="option in sportOpt">{{option}}</option>
 		
       </select>
     </div>
@@ -64,8 +59,9 @@
 
   <div class="alert alert-danger" role="alert" ng-show="answer">
 
-   <h3> {{check}} {{hurry}}</h3>
+   <h3> {{check}} {{hurry}}</h3>{{test}}
 
+   
   </div>
 
 </div>
